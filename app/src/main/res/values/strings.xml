@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Inscribio</string>
     <string name="action_settings">Settings</string>
+    <string name="action_add_one">+1</string>
+    <string name="action_add_ten">+10</string>
+    <string name="action_subtract_one">-1</string>
+    <string name="action_subtract_ten">-10</string>
+    <string name="title_player_list">Players</string>
+    <string name="title_player_detail">Player Detail</string>
 </resources>
