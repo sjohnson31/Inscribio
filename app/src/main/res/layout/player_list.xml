@@ -6,8 +6,9 @@
     android:name="io.inscrib.inscribio.PlayerListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:clipToPadding="false"
     app:layoutManager="LinearLayoutManager"
     tools:context=".MainActivity"
     tools:listitem="@layout/player_list_content" />
