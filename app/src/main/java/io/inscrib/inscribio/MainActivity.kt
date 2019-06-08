@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.player_list.*
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        (player_list.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
         player_list.adapter = SimpleItemRecyclerViewAdapter(PlayerList.ITEMS) { player, value ->
             player.score += value
             player_list.adapter?.notifyItemChanged(player.id - 1)
