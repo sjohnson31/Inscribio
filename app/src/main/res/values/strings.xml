@@ -7,4 +7,8 @@
     <string name="action_subtract_ten">-10</string>
     <string name="title_player_list">Players</string>
     <string name="title_player_detail">Player Detail</string>
+    <string name="title_activity_golf_setup">GolfSetupActivity</string>
+    <string name="number_of_players">Number of Players</string>
+    <string name="score_cap">Score Cap</string>
+    <string name="submit">Submit</string>
 </resources>

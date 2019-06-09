@@ -1,5 +1,8 @@
 package io.inscrib.inscribio
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Button
@@ -11,17 +14,34 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.player_list.*
 
-class MainActivity : AppCompatActivity() {
+fun startPlayerListActivity(context: Activity, numPlayers: Int, scoreCap: Int) {
+    val intent = Intent(context, PlayerListActivity::class.java)
+    intent.putExtra("NUM_PLAYERS", numPlayers)
+    intent.putExtra("SCORE_CAP", scoreCap)
+    context.startActivity(intent)
+}
+
+class PlayerListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        val numPlayers = intent.getIntExtra("NUM_PLAYERS", 1)
+        val scoreCap = intent.getIntExtra("SCORE_CAP", 1)
+
+        PlayerList.ITEMS.clear()
+        repeat(numPlayers) {
+            PlayerList.ITEMS.add(PlayerList.Player(it, 0))
+        }
 
         (player_list.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
         player_list.adapter = SimpleItemRecyclerViewAdapter(PlayerList.ITEMS) { player, value ->
             player.score += value
-            player_list.adapter?.notifyItemChanged(player.id - 1)
+            if (player.score >= scoreCap) {
+                Snackbar.make(toolbar, "Somebody won! Who knows who did", Snackbar.LENGTH_LONG).show()
+            }
+            player_list.adapter?.notifyItemChanged(player.id)
         }
 
         fab.setOnClickListener { view ->
