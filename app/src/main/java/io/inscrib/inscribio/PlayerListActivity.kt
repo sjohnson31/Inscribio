@@ -24,6 +24,9 @@ fun startPlayerListActivity(context: Activity, numPlayers: Int, scoreCap: Int) {
 class PlayerListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) {
+            println(savedInstanceState)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
@@ -44,9 +47,10 @@ class PlayerListActivity : AppCompatActivity() {
             player_list.adapter?.notifyItemChanged(player.id)
         }
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        fab.setOnClickListener {
+            val intent = this.intent
+            finish()
+            startActivity(intent)
         }
     }
 
