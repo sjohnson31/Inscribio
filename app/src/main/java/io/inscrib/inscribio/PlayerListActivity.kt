@@ -48,9 +48,7 @@ class PlayerListActivity : AppCompatActivity() {
         }
 
         fab.setOnClickListener {
-            val intent = this.intent
-            finish()
-            startActivity(intent)
+            recreate()
         }
     }
 
